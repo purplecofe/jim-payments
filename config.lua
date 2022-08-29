@@ -13,7 +13,7 @@ Config = {
 	Manage = true, -- "true" if using qb-management
 				-- "false" if using qb-bossmenu
 
-	List = true, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
+	List = false, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
 	PaymentRadius = 15, -- This is how far the playerlist will check for nearby players (based on the person charging)
 
 	Peds = true, -- "true" to enable peds spawning in banks
@@ -85,7 +85,7 @@ Config = {
 		['ambulance'] = { Commission = 0.25, },
 	},
 	FineJobConfirmation = false, --"true" makes it so fines need confirmation, "false" skips this ands just removes the money
-	FineJobList = true, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
+	FineJobList = false, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
 
 	---------------------
 	-- Banking Systems --
@@ -95,7 +95,7 @@ Config = {
 	BankBlips = false, -- Enable this if you disabled qb-banking and need bank locations
 	ATMBlips = false, -- Enable this if you are a pyscho and need every ATM to be on the map too
 
-	Gabz = true, 	-- "true" to enable Gabz Bank locations
+	Gabz = false, 	-- "true" to enable Gabz Bank locations
 					-- this corrects the ATM/Bank Cashier + Ticket Cash in location
 
 	ATMModels = { `prop_atm_01`, `prop_atm_02`, `prop_atm_03`, `prop_fleeca_atm` },
