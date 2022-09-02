@@ -103,7 +103,7 @@ RegisterNetEvent('jim-payments:client:PolCharge', function()
 	--Check if player is allowed to use /cashregister command
 	local allowed = false
 	for k in pairs(Config.FineJobs) do if k == PlayerJob.name then allowed = true end end
-	if not allowed then triggerNotify(nil, "You don't have the required job", "error") return end
+	if not allowed then triggerNotify(nil, "你沒有權限這麼做", "error") return end
 
 	local newinputs = {} -- Begin qb-input creation here.
 	if Config.FineJobList then -- If nearby player list is wanted:
@@ -123,17 +123,17 @@ RegisterNetEvent('jim-payments:client:PolCharge', function()
 			end
 		end
 		--If list is empty(no one nearby) show error and stop
-		if not nearbyList[1] then triggerNotify(nil, "No one near by to charge", "error") return end
+		if not nearbyList[1] then triggerNotify(nil, "附近沒有人", "error") return end
 		newinputs[#newinputs+1] = { text = " ", name = "citizen", type = "select", options = nearbyList }
 	else -- If Config.List is false, create input text box for ID's
 		newinputs[#newinputs+1] = { type = 'text', isRequired = true, name = 'citizen', text = "# Person's ID #" }
 	end
 	--Continue adding payment options to qb-input
-	newinputs[#newinputs+1] = { type = 'number', isRequired = true, name = 'price', text = '💵  Amount to Charge' }
+	newinputs[#newinputs+1] = { type = 'number', isRequired = true, name = 'price', text = '💵  金額' }
 	--Grab Player Job name or Gang Name if needed
 	local label = PlayerJob.label
 	local gang = false
-	local dialog = exports['qb-input']:ShowInput({ header = label.." Charge", submitText = "Send", inputs = newinputs})
+	local dialog = exports['qb-input']:ShowInput({ header = label.." 罰單", submitText = "送出", inputs = newinputs})
 	if dialog then
 		if not dialog.citizen or not dialog.price then return end
 		TriggerServerEvent('jim-payments:server:PolCharge', dialog.citizen, dialog.price)
@@ -144,7 +144,7 @@ RegisterNetEvent('jim-payments:Tickets:Menu', function(data)
 	--Get ticket info
 	local p = promise.new() QBCore.Functions.TriggerCallback('jim-payments:Ticket:Count', function(cb) p:resolve(cb) end)
 	local amount = Citizen.Await(p)
-	if not amount then triggerNotify(nil, "You don't have any tickets to trade", "error") amount = 0 return else amount = amount.amount end
+	if not amount then triggerNotify(nil, "你沒有任何收據可以交易", "error") amount = 0 return else amount = amount.amount end
 	local sellable = false
 	local name = "" local label = ""
 	--Check/adjust for job/gang names
@@ -154,10 +154,10 @@ RegisterNetEvent('jim-payments:Tickets:Menu', function(data)
 	end
 		if sellable then -- if info is found then:
 			exports['qb-menu']:openMenu({
-				{ isMenuHeader = true, header = "🧾 "..label.." Receipts 🧾", txt = "Do you want trade your receipts for payment?" },
-				{ isMenuHeader = true, header = "", txt = "Amount of Tickets: "..amount.."<br>Total Payment: $"..(Config.Jobs[name].PayPerTicket * amount) },
-				{ icon = "fas fa-circle-check", header = "Yes", txt = "", params = { event = "jim-payments:Tickets:Sell:yes" } },
-				{ icon = "fas fa-circle-xmark", header = "No", txt = "", params = { event = "jim-payments:Tickets:Sell:no" } },
+				{ isMenuHeader = true, header = "🧾 "..label.." 收據 🧾", txt = "你想用你的收據來請款嗎?" },
+				{ isMenuHeader = true, header = "", txt = "收據總數: "..amount.."<br>總金額: $"..(Config.Jobs[name].PayPerTicket * amount) },
+				{ icon = "fas fa-circle-check", header = "是", txt = "", params = { event = "jim-payments:Tickets:Sell:yes" } },
+				{ icon = "fas fa-circle-xmark", header = "否", txt = "", params = { event = "jim-payments:Tickets:Sell:no" } },
 			})
 		end
 	end
