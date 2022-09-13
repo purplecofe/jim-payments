@@ -32,7 +32,9 @@ CreateThread(function()
 	exports['qb-target']:AddCircleZone("JimBank", vector3(Config.CashInLocation.x, Config.CashInLocation.y, Config.CashInLocation.z), 2.0, { name="JimBank", debugPoly=Config.Debug, useZ=true, },
 		{ options = {
 			{ event = "jim-payments:Tickets:Menu", icon = "fas fa-receipt", label = "Cash in Job Receipts", job = jobroles, },
-			{ event = "jim-payments:Tickets:Menu", icon = "fas fa-receipt", label = "Cash in Gang Receipts", gang = gangroles, } },
+			{ event = "jim-payments:Tickets:Menu", icon = "fas fa-receipt", label = "Cash in Gang Receipts", gang = gangroles, },
+			{ event = "Renewed-Banking:client:accountManagmentMenu", icon = "fas fa-money-check" , label = "管理銀行帳戶" },
+			{ event = "Renewed-Banking:client:openBankUI", icon = "fas fa-money-check" , label = "查看銀行帳戶" } },
 		distance = 2.0 })
 	--Crete Ped at the location
 	if Config.Peds then
@@ -144,7 +146,7 @@ RegisterNetEvent('jim-payments:Tickets:Menu', function(data)
 	--Get ticket info
 	local p = promise.new() QBCore.Functions.TriggerCallback('jim-payments:Ticket:Count', function(cb) p:resolve(cb) end)
 	local amount = Citizen.Await(p)
-	if not amount then triggerNotify(nil, "你沒有任何收據可以交易", "error") amount = 0 return else amount = amount.amount end
+	if not amount then triggerNotify(nil, "你沒有任何收據可以兌現", "error") amount = 0 return else amount = amount.amount end
 	local sellable = false
 	local name = "" local label = ""
 	--Check/adjust for job/gang names

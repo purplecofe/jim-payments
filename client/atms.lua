@@ -24,13 +24,11 @@ CreateThread(function()
 			end
 		end
 	end
-	if Config.useBanks then
-		if Config.BankBlips then
-			for _, v in pairs(Config.BankLocations) do
-				for _, b in pairs(v) do
-					makeBlip({coords = b, sprite = 108, col = 2, scale = 0.55, disp = 6, name = "Bank" })
-					break
-				end
+	if Config.BankBlips then
+		for _, v in pairs(Config.BankLocations) do
+			for _, b in pairs(v) do
+				makeBlip({coords = b, sprite = 108, col = 2, scale = 0.55, disp = 6, name = "Bank" })
+				break
 			end
 		end
 	end

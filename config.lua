@@ -34,7 +34,7 @@ Config = {
 		`U_F_M_CasinoShop_01`,
 	},
 
-	PhoneBank = false, -- Set this to false to use the popup payment system FOR CARD/BANK PAYMENTS instead of using phone invoices
+	PhoneBank = true, -- Set this to false to use the popup payment system FOR CARD/BANK PAYMENTS instead of using phone invoices
 						-- This doesn't affect Cash payments as they by default use confirmation now
 						-- This is helpful for phones that don't support invoices well
 
@@ -92,7 +92,7 @@ Config = {
 	---------------------
 	useATM = false, -- Enable this to use the scripts ATM's and controls
 	useBanks = false, -- Enable this to use my banking stuff
-	BankBlips = false, -- Enable this if you disabled qb-banking and need bank locations
+	BankBlips = true, -- Enable this if you disabled qb-banking and need bank locations
 	ATMBlips = false, -- Enable this if you are a pyscho and need every ATM to be on the map too
 
 	Gabz = false, 	-- "true" to enable Gabz Bank locations
