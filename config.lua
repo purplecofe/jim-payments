@@ -1,19 +1,24 @@
-print("^2Jim^7-^2Payments v^42^7.^47 ^7- ^2Payments Script by ^1Jimathy^7")
+print("^2Jim^7-^2Payments ^7v^42^7.^48^7.^43 ^7- ^2Payments Script by ^1Jimathy^7")
 
 -- If you need support I now have a discord available, it helps me keep track of issues and give better support.
 
 -- https://discord.gg/xKgQZ6wZvS
 
 Config = {
+	Lan = "tc",
 	Debug = false,
 	Notify = "qb",
+
 	---------------------------------
 	-- Default Job Payment Systems --
 	---------------------------------
-	Manage = true, -- "true" if using qb-management
-				-- "false" if using qb-bossmenu
+	Manage = true, 	-- "true" if using qb-management
+					-- "false" if using qb-bossmenu
 
 	List = false, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
+	RenewedBanking = true, -- Enable if using Renewed-Banking (requires Manage to be true and leaving jim-payments banking part separate)
+	ApGov = false, -- Toggle support for AP-Goverment Tax
+
 	PaymentRadius = 15, -- This is how far the playerlist will check for nearby players (based on the person charging)
 
 	Peds = true, -- "true" to enable peds spawning in banks
@@ -246,3 +251,5 @@ if Config.Gabz then
 		vector3(264.77, 207.51, 106.28),
 	}
 end
+
+Loc = {}

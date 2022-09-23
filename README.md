@@ -81,9 +81,21 @@ TriggerEvent('jim-payments:Tickets:Give', { sender = Ply.PlayerData.charinfo.fir
 ```
 - The phone should now be integrated with jim-payments
 
----
+#### Renewed QB-Phone:
+- Go to `qb-phone > server > invoices.lua`
+- Search for the event: `qb-phone:server:PayMyInvoice` and search for this line:
+```lua
+TriggerEvent("qb-phone:server:InvoiceHandler", true, amount, src, resource)
+```
+
+- Directly under this line add this event:
+```lua
+TriggerEvent('jim-payments:Tickets:Give', { amount = amount, senderCitizenId = sendercitizenid, sender = SenderPly.PlayerData.charinfo.firstname, society = society }, SenderPly)
+```
+- When invoices are paid, they should now be integrated with jim-payments
+
 # Setup/Config
----
+
 ## Custom Locations
 
 - You can make of this payment system for a job script that wasn't created by me
@@ -175,3 +187,14 @@ FineJobList = true, -- "true" to use nearby player list feature in the cash regi
   - `ATMBlips` Enable this if you are a pyscho and need every ATM to be on the map too
   - `Gabz` Enable to change to Gabz Bank locations, this corrects the ATM/Bank Cashier + Ticket Cash in
 ---
+## Support for other scripts
+### Renewed-Banking
+  - Support for renewed banking added
+  - Toggle `RenewedBanking` in the config.lua to enable this
+
+### Renewed's qb-phone
+  - Simply leave the Config.PhoneType as `"qb"`
+
+### AP-Goverment
+- Support for AP-Goverment Tax on payments
+- Toggle `ApGov` in the config.lua to enable this
