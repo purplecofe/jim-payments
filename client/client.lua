@@ -32,10 +32,12 @@ CreateThread(function()
 	exports['qb-target']:AddCircleZone("JimBank", vector3(Config.CashInLocation.x, Config.CashInLocation.y, Config.CashInLocation.z), 2.0, { name="JimBank", debugPoly=Config.Debug, useZ=true, },
 		{ options = {
 			{ event = "jim-payments:Tickets:Menu", icon = "fas fa-receipt", label = Loc[Config.Lan].target["cashin_boss"], job = jobroles, },
-			{ event = "jim-payments:Tickets:Menu", icon = "fas fa-receipt", label = Loc[Config.Lan].target["cashin_gang"], gang = gangroles, } },
+			{ event = "jim-payments:Tickets:Menu", icon = "fas fa-receipt", label = Loc[Config.Lan].target["cashin_gang"], gang = gangroles, },
 			{ event = "Renewed-Banking:client:accountManagmentMenu", icon = "fas fa-money-check" , label = "管理銀行帳戶" },
-			{ event = "Renewed-Banking:client:openBankUI", icon = "fas fa-money-check" , label = "查看銀行帳戶" } },
-		distance = 2.0 })
+			{ event = "Renewed-Banking:client:openBankUI", icon = "fas fa-money-check" , label = "查看銀行帳戶" } 
+		},
+			distance = 2.0
+		})
 	--Crete Ped at the location
 	if Config.Peds then
 		if not Config.Gabz then CreateModelHide(vector3(Config.CashInLocation.x, Config.CashInLocation.y, Config.CashInLocation.z), 1.0, `v_corp_bk_chair3`, true) end
