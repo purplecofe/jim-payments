@@ -1,4 +1,4 @@
-print("^2Jim^7-^2Payments ^7v^42^7.^48^7.^43 ^7- ^2Payments Script by ^1Jimathy^7")
+print("^2Jim^7-^2Payments ^7v^42^7.^48^7.^44 ^7- ^2Payments Script by ^1Jimathy^7")
 
 -- If you need support I now have a discord available, it helps me keep track of issues and give better support.
 
@@ -12,11 +12,9 @@ Config = {
 	---------------------------------
 	-- Default Job Payment Systems --
 	---------------------------------
-	Manage = true, 	-- "true" if using qb-management
-					-- "false" if using qb-bossmenu
 
-	List = false, -- "true" to use nearby player list feature in the cash registers, "false" for manual id entry
-	RenewedBanking = true, -- Enable if using Renewed-Banking (requires Manage to be true and leaving jim-payments banking part separate)
+	RenewedBanking = false, -- Enable if using Renewed-Banking false if using QB-Management
+
 	ApGov = false, -- Toggle support for AP-Goverment Tax
 
 	PaymentRadius = 15, -- This is how far the playerlist will check for nearby players (based on the person charging)
@@ -63,6 +61,7 @@ Config = {
 	-- Commission is a percentage eg "0.10" becomes 10%
 	Jobs = {
 		['beanmachine'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
+		['bakery'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
 		['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.10, },
 		['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
 		['henhouse'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
